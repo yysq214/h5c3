@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            font-size: 8px;
+
+        }
+        .map{
+            width: 300px;
+            height: 300px;
+            background: #e0e0e0;
+        }
+        .outDiv,.inDiv,.snakeDiv,.foodDiv{
+            overflow: hidden;
+            height: 0;
+            padding: 9px 0;
+            float: left;
+            line-height: 100px;
+            width: 18px;
+            margin: 1px;
+        }
+        .outDiv{
+
+            background: brown;
+        }
+        .inDiv{
+
+            background: beige;
+        }
+        .snakeDiv{
+
+            background: green;
+        }
+        .foodDiv{
+
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<button class="btn">开始</button><span class="jifen"></span>
+<div class="map">
+
+
+</div>
+
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    var snakeArr = new Array();
+    var foodArr = new Array();
+    var snake = new Object();
+    var number = 0;
+    snake.timer = null;
+
+    $(function () {
+        var btn = $(".btn");
+        function map(num,outDiv,inDiv) {
+            for(var i=1 ; i<=num*num ; i++){
+                if(i<=num || i%num == 0 || i%num == 1 || i > num*(num-1)){
+                    $(".map").append("<div class='outDiv'>" +i+ "</div>");
+                }else {
+                    $(".map").append("<div class='inDiv'>" +i+ "</div>");
+                    foodArr.push(i-1);
+                }
+            }
+            snakeArr.push(foodArr[0]);
+        }
+        function move(direction) {
+            var numSpeed =0;
+            switch (direction){
+                case "left":
+                    numSpeed = -1;
+                    break;
+                case "right":
+                    numSpeed = 1;
+                    break;
+                case "up":
+                    numSpeed = -15;
+                    break;
+                case "down":
+                    numSpeed = 15;
+                    break;
+            }
+            var next = snakeArr[0] + numSpeed;
+            var nextClass = $(".map").children().eq(next).attr("class").toString();
+
+            if(nextClass == "outDiv" || nextClass == "snakeDiv"){
+                alert("死了");
+                clearInterval(snake.timer);
+            }if(nextClass == "foodDiv"){
+                number++;
+                $(".jifen").text("累计吃掉"+ number + "只小虫");
+                $(".map").children().eq(next).removeClass("foodDiv");
+                $(".map").children().eq(next).addClass("snakeDiv");
+                snakeArr.unshift(next);
+                food();
+            }if(nextClass == "inDiv"){
+                snakeArr.unshift(next);
+                $(".map").children().eq(next).removeClass("inDiv");
+                $(".map").children().eq(next).addClass("snakeDiv");
+                var lastSnake = snakeArr[snakeArr.length-1];
+                $(".map").children().eq(lastSnake).removeClass("snakeDiv");
+                $(".map").children().eq(lastSnake).addClass("inDiv");
+                snakeArr.splice(snakeArr.length-1,1);
+
+
+            }
+            // console.log(snakeArr);
+        }
+        $(window).keydown(function (event) {
+            switch (event.keyCode.toString()){
+                case "37":
+                    if(snake.direction != "right"){
+                        snake.direction = "left";
+                    }
+                    break;
+                case "38":
+                    if(snake.direction != "down"){
+                        snake.direction = "up";
+                    }
+                    break;
+                case "39":
+                    if(snake.direction != "left"){
+                        snake.direction = "right";
+                    }
+                    break;
+                case "40":
+                    if(snake.direction != "up"){
+                        snake.direction = "down";
+                    }
+                    break;
+            }
+        });
+        function autoMove() {
+            snake.timer = setInterval(function () {
+                move(snake.direction);
+            },500)
+        };
+        function randomFood() {
+            var x = parseInt(Math.random()*foodArr.length);
+            return foodArr[x];
+        };
+        function food() {
+            var food1 = randomFood();
+            if(    snakeArr.indexOf(food1)     ==     (-1)     ){
+                $(".map").children().eq(food1).removeClass("inDiv");
+                $(".map").children().eq(food1).addClass("foodDiv");
+            }else {
+                food();
+            }
+        };
+
+        map(15,"outDiv","inDiv");
+
+        function init() {
+            $(".jifen").text("累计吃掉"+ number + "只小虫");
+
+            $(".map").children().eq(snakeArr[0]).removeClass("inDiv");
+            $(".map").children().eq(snakeArr[0]).addClass("snakeDiv");
+            snake.direction = "right";
+            autoMove();
+            food()
+
+        };
+        btn.click(function () {
+           init();
+        });
+    });
+</script>
+</body>
+</html>

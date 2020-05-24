@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .banner {
+            width: 1200px;
+            margin: 10px auto;
+        }
+
+        .main {
+            height: 500px;
+            position: relative;
+        }
+
+        li img {
+            width: 100%;
+        }
+
+
+        ul li {
+            list-style: none;
+            position: absolute;
+            left: 200px;
+            top: 0;
+        }
+
+        .but {
+            width: 1200px;
+            position: absolute;
+            top: 300px;
+            z-index: 99;
+            opacity: 0;
+        }
+
+        .prev {
+            float: left;
+        }
+
+        .next {
+            float: right;
+        }
+
+    </style>
+</head>
+<body>
+<div class="banner">
+    <div class="main">
+        <ul>
+            <li><a href="#"><img src="img/slidepic1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img/slidepic2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img/slidepic3.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img/slidepic4.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img/slidepic5.jpg" alt=""></a></li>
+        </ul>
+
+        <div class="but">
+            <a href="javascript:;" id="prev" class="prev"><img src="img/prev.png" alt=""></a>
+            <a href="javascript:;" id="next" class="next"><img src="img/next.png" alt=""></a>
+        </div>
+    </div>
+</div>
+</body>
+<script src="lunbo.js"></script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*五、将字符串数组用|或其他符号分割["哈哈"|"呵呵"|"嘿嘿"|"嘎嘎"]*/
+    var arr = ["哈哈","呵呵","嘿嘿","嘎嘎"]
+    var str = "";
+    for(i=0;i<arr.length;i++)
+    {
+        if(i == 0)
+        {
+            str += "["+"\""+arr[i]+"\""+"|";
+        }
+        else if(i == arr.length - 1)
+        {
+            str += "\""+arr[i]+"\""+"]";
+        }
+        else{
+            str += "\""+arr[i]+"\""+"|";
+        }
+    }
+    console.log(str);
+</script>
+</body>
+</html>
