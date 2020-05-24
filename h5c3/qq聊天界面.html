@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body{
+        margin: 0px;
+        padding: 0px;
+    }
+    .all{
+        width: 300px;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        margin: 20px auto;
+        position: relative;
+        border: 1px #d6d6d6 solid;
+        border-radius: 12px;
+    }
+    .top{
+        flex: 0.8;
+        background: rgba(0, 0, 0, 0.93);
+        position: relative;
+        border-radius: 12px 12px 0px 0px;
+    }
+    .top .jiantou{
+        display: inline-block;
+        width: 20px;
+        height: 40px;
+        margin-left: 5px;
+        margin-top: 8px;
+        cursor: pointer;
+        background: url("2144项目/index_v20_z.png") no-repeat -40px -160px;
+    }
+    .top .word{
+        position: absolute;
+        display: inline-block;
+        width: 40px;
+        height: 10px;
+        color: white;
+        margin-left: 10px;
+        margin-top: 14px;
+        font-size: 18px;
+    }
+    .top .tou{
+        position: absolute;
+        display: inline-block;
+        width: 20px;
+        height: 40px;
+        right: 10px;
+        top: 8px;
+        cursor: pointer;
+        background: url("2144项目/index_v20_z.png") no-repeat -45px -514px;
+    }
+    .center{
+        flex: 7;
+        background: url("haimian.jpg") left top;
+        box-sizing: content-box;
+    }
+    .center .pic1{
+        width: 100px;
+        height: 60px;
+        position: absolute;
+        right: 10px;
+        margin-top: 20px;
+    }
+    .pic1 .t1{
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: url("images/pic_1.jpg") no-repeat -90px -15px;
+        right: 2px;
+    }
+    .pic1 .w1{
+        position: absolute;
+        width: 50px;
+        height: 30px;
+        color: white;
+        background: #eb6163;
+        border-radius: 12px;
+        right: 70px;
+        top: 30px;
+        text-align: center;
+        line-height: 25px;
+    }
+    .pic1 .w1 .p{
+        position: absolute;
+        width: 10px;
+        height:15px;
+        background: #eb6163;
+        top: -4px;
+        right: -5px;
+        border-radius: 15px 0px 19px 0px;
+        transform: rotate(30deg);
+    }
+    .center .pic2{
+        width: 100px;
+        height: 60px;
+        position: absolute;
+        left: 10px;
+        top: 50px;
+    }
+    .pic2 .t2{
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: url("images/pic_2.jpg") no-repeat -90px -15px;
+        left: 10px;
+        top: 70px;
+    }
+    .pic2 .w2{
+        position: absolute;
+        width: 50px;
+        height: 30px;
+        color: white;
+        background: #6c97cf;
+        border-radius: 12px;
+        left: 75px;
+        top: 100px;
+        text-align: center;
+        line-height: 25px;
+    }
+    .pic2 .w2 .p{
+        position: absolute;
+        width: 10px;
+        height:15px;
+        background: #6c97cf;
+        top: -4px;
+        left: -5px;
+        border-radius: 15px 0px 19px 0px;
+        transform: rotate(-88deg);
+    }
+    .center .pic3{
+        width: 100px;
+        height: 60px;
+        position: absolute;
+        right: 10px;
+        top: 80px;
+    }
+    .pic3 .t3{
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: url("images/pic_1.jpg") no-repeat -90px -15px;
+        right: 2px;
+        top: 100px;
+    }
+    .pic3 .w3{
+        position: absolute;
+        width: 150px;
+        height: 30px;
+        color: white;
+        background: #eb6163;
+        border-radius: 12px;
+        right: 70px;
+        top: 135px;
+        text-align: center;
+        line-height: 25px;
+    }
+    .pic3 .w3 .p{
+        position: absolute;
+        width: 10px;
+        height:15px;
+        background: #eb6163;
+        top: -4px;
+        right: -5px;
+        border-radius: 15px 0px 19px 0px;
+        transform: rotate(30deg);
+    }
+    .center .pic4{
+        width: 100px;
+        height: 60px;
+        position: absolute;
+        left: 10px;
+        top: 120px;
+    }
+    .pic4 .t4{
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: url("images/pic_2.jpg") no-repeat -90px -15px;
+        left: 10px;
+        top: 140px;
+    }
+    .pic4 .w4{
+        position: absolute;
+        width: 50px;
+        height: 30px;
+        color: white;
+        background: #6c97cf;
+        border-radius: 12px;
+        left: 75px;
+        top: 170px;
+        text-align: center;
+        line-height: 25px;
+    }
+    .pic4 .w4 .p{
+        position: absolute;
+        width: 10px;
+        height:15px;
+        background: #6c97cf;
+        top: -4px;
+        left: -5px;
+        border-radius: 15px 0px 19px 0px;
+        transform: rotate(-88deg);
+    }
+    .bottom{
+        flex: 0.7;
+        background: rgba(150, 141, 141, 0.38);
+        border-radius: 0px 0px 12px 12px;
+        position: relative;
+    }
+    .bottom .face{
+        position: absolute;
+        display: inline-block;
+        width: 23px;
+        height: 23px;
+        border-radius: 50%;
+        color: #8e8e8e;
+        border: 1px #8e8e8e solid;
+        top: 8px;
+        left: 5px;
+        cursor: pointer;
+    }
+    .bottom .jia{
+        position: absolute;
+        display: inline-block;
+        width: 23px;
+        height: 23px;
+        border-radius: 50%;
+        color: #8e8e8e;
+        border: 1px #8e8e8e solid;
+        top: 8px;
+        left: 35px;
+        cursor: pointer;
+    }
+    .bottom input{
+        outline-style: none;
+        position: absolute;
+        display: inline-block;
+        width: 140px;
+        height: 25px;
+        border-radius: 12px;
+        color: white;
+        top: 5px;
+        left: 80px;
+    }
+    .bottom .voice{
+        position: absolute;
+        display: inline-block;
+        width: 40px;
+        height: 25px;
+        border-radius: 8px;
+        right: 8px;
+        top: 7px;
+        border: 1px solid #adadad;
+        background: url("1132398.jpg") no-repeat -304px -207px ;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div class="all">
+        <div class="top">
+            <span class="jiantou"></span>
+            <span class="word">消息</span>
+            <span class="tou"></span>
+        </div>
+        <div class="center">
+            <div class="pic1">
+                <div class="t1"></div>
+                <div class="w1">在嘛?
+                <div class="p"></div></div>
+            </div>
+            <div class="pic2">
+                <div class="t2"></div>
+                <div class="w2">昂
+                    <div class="p"></div></div>
+            </div>
+            <div class="pic3">
+                <div class="t3"></div>
+                <div class="w3">明天一起吃饭呀
+                    <div class="p"></div></div>
+            </div>
+            <div class="pic4">
+                <div class="t4"></div>
+                <div class="w4">嗯
+                    <div class="p"></div></div>
+            </div>
+        </div>
+        <div class="bottom">
+            <span class="face">^^</span>
+            <span class="jia">&nbsp;+</span>
+            <input type="text" value="">
+            <span class="voice"></span>
+        </div>
+    </div>
+</body>
+</html>
